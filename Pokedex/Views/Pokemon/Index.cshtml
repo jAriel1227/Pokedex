@@ -1,0 +1,56 @@
+﻿@using Pokedex.Core.Application.ViewModels.Pokemon
+@model List<PokemonViewModels>
+@{
+    ViewData["Title"] = "Pokémones";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+             <div class="card">       
+                  <div class="card-header bg-dark">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h3 class="text-white">Mantenimiento de Pokemones</h3>
+                      <a asp-controller="Pokemon" asp-action="Crear" class="btn btn-primary">Nuevo Pokemon</a>
+                    </div>
+                  </div>
+            </div>
+            @if (Model == null || Model.Count == 0)
+            {
+               <div class="p-4 mb-3 bg-light rounded">
+                 <h4 class="fst-italic text-center">No hay Pokemones creados.</h4>
+                 <label class="text-primary">Info:</label>
+                 <p class="mb-0 fst-italic">Crea un nuevo pokemon o varios pokemones.</p>
+               </div>
+            }
+            else{
+             <div class="card-body mt-2">
+                <div class="row">
+                   @foreach (PokemonViewModels pk in Model)
+                   {             
+                      <div class="col-4 mt-2">
+                         <div class="card shadow-sm">
+                            <img class="db-placebolder-img card-img-top image-size" src="@pk.ImageUrl" />
+                              <div class="card-body mt-2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <h4 class="fst-italic">@pk.Name</h4>
+                                   <div class="btn-group">
+                                     <a asp-controller="Pokemon" asp-action="Editar"  asp-route-id="@pk.Id" class=" btn btn-outline-warning">Edidtar</a>
+                                     <a asp-controller="Pokemon" asp-action="Eliminar"  asp-route-id="@pk.Id" class=" btn btn-outline-danger">Eliminar</a>
+                                   </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                   <small class="fw-bold text-primary fs-12 mt-2">Region: @pk.Region</small>                                                             
+                                   <small class="fw-bold text-success fs-12 mt-2"> Tipo: | @pk.NamePrimario | @pk.NameSecundario</small>                             
+                                </div>
+                              </div>
+                         </div>
+                      </div>   
+                   }
+                </div>
+             </div>  
+             }
+        </div>
+    </div>
+</div>
+

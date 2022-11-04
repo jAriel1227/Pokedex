@@ -1,0 +1,71 @@
+﻿@using Pokedex.Core.Application.ViewModels.TypePokemon
+@model List<TypePokemonViewModels>
+
+@{
+    ViewData["Title"] = "Tipos de Pokémones";    
+   
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">       
+                  <div class="card-header bg-dark">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h3 class="text-white">Mantenimiento de Tipos</h3>
+                       <a asp-controller="TypePokemon" asp-action="Crear" class="btn btn-primary">Nuevo Tipo</a>
+                    </div>
+                  </div>
+            </div>
+
+            @if (Model == null || Model.Count == 0)
+            {
+              
+               <div class="p-4 mb-3 bg-light rounded">
+                 <h4 class="fst-italic text-center">No hay tipos de pokemones creados.</h4>
+                 <label class="text-primary">Info:</label>
+                 <p class="mb-0 fst-italic">Crea una nuevo tipo de pokemon o varos tipos de pokemones.</p>                 
+              </div>              
+            }
+            else
+            {
+              <div class="card-body mt-2">
+                 <div class="row">
+                    @foreach (TypePokemonViewModels type in Model)
+                    {             
+                      <div class="col-4 mt-2">
+                         <div class="card shadow-sm">                   
+                            <div class="card-body">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="fst-italic">@type.Name</h4>                                                    
+                              </div>
+                              <div>
+                                <h6>Descripción:</h6>
+                                 <p class="card-text fst-italic"><font style="vertical-align: inherit;">
+                                 <font style="vertical-align: inherit;">@type.Description</font></font></p>
+                              </div>
+                              <div>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                              <h6 class="mt-2">Cant. de Pokemones:</h6>  
+                                 @{//suma los dos tipos de pokemon...
+                                    var sum = type.PKQuantity + type.PkQuantity2;
+                                  }
+                              <span class="badge text-black bg-primary rounded-pill mt-1">@sum</span>                            
+                            </div>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                              <div class="btn-group mt-2">
+                                 <a asp-controller="TypePokemon" asp-action="Editar" asp-route-id="@type.Id" class=" btn btn-outline-warning">Edidtar</a>
+                                 <a asp-controller="TypePokemon" asp-action="Eliminar"  asp-route-id="@type.Id" class=" btn btn-outline-danger">Eliminar</a>
+                               </div>  
+                            </div>
+                           </div>
+                         </div>
+                      </div>   
+                    }
+                 </div>
+              </div>
+            }        
+        </div>
+    </div>
+</div>

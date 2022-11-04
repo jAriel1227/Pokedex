@@ -1,0 +1,15 @@
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\bin\Debug\net5.0\Pokedex.Core.Application.deps.json
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\bin\Debug\net5.0\Pokedex.Core.Application.dll
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\bin\Debug\net5.0\Pokedex.Core.Application.pdb
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\bin\Debug\net5.0\Pokedex.Core.Domain.dll
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\bin\Debug\net5.0\Pokedex.Core.Domain.pdb
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\Pokedex.Core.Application.csproj.AssemblyReference.cache
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\Pokedex.Core.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\Pokedex.Core.Application.AssemblyInfoInputs.cache
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\Pokedex.Core.Application.AssemblyInfo.cs
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\Pokedex.Core.Application.csproj.CoreCompileInputs.cache
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\Pokedex.Core.Application.csproj.CopyComplete
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\Pokedex.Core.Application.dll
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\refint\Pokedex.Core.Application.dll
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\Pokedex.Core.Application.pdb
+C:\Users\jarie\source\repos\PokedexApp\AppPokedex\obj\Debug\net5.0\ref\Pokedex.Core.Application.dll

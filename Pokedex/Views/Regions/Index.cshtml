@@ -1,0 +1,70 @@
+﻿@using Pokedex.Core.Application.ViewModels.Regions
+@model List<RegionsViewModels>
+
+@{
+    ViewData["Title"] = "Regiones";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">       
+                  <div class="card-header bg-dark">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h3 class="text-white">Mantenimiento de Regiones</h3>
+                      <a asp-controller="Regions" asp-action="Crear" class="btn btn-primary">Nueva Region</a>
+                    </div>
+                  </div>
+            </div>
+
+            @if (Model == null || Model.Count == 0)
+            {
+              <div class="p-4 mb-3 bg-light rounded">
+                 <h4 class="fst-italic text-center">No hay regiones creadas para los pokemones.</h4>
+                 <label class="text-primary">Info:</label>
+                 <p class="mb-0 fst-italic">Crea una nueva region o varias regiones.</p>
+              </div>
+            }
+            else
+            {
+              <div class="card-body mt-2">
+                <div class="row">
+                  @foreach (RegionsViewModels r in Model)
+                  {             
+                    <div class="col-4 mt-2">
+                       <div class="card shadow-sm">                   
+                          <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                               <h4 class="fst-italic">@r.Name</h4>                                                   
+                            </div>
+                            <div>
+                              <h6>Descripción:</h6>
+                               <p class="card-text fst-italic"><font style="vertical-align: inherit;">
+                               <font style="vertical-align: inherit;">@r.Description</font></font></p>
+                            </div>
+                            <div>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                              <h6 class="mt-2">Cant. de Pokemones:</h6> 
+                              <span class="badge text-black bg-primary rounded-pill mt-1">@r.PKQuantity</span>
+                            </div>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <div class="btn-group mt-2">
+                                    <a asp-controller="Regions" asp-action="Editar"  asp-route-id="@r.Id" class=" btn btn-outline-warning">Edidtar</a>
+                                    <a asp-controller="Regions" asp-action="Eliminar"  asp-route-id="@r.Id" class=" btn btn-outline-danger">Eliminar</a>
+                                </div> 
+                            </div>
+                          </div>
+                       </div>
+                    </div>   
+                  }
+                </div>
+              </div>
+            }
+  
+        </div>
+    </div>
+</div>
+
+        
+
+

@@ -1,0 +1,79 @@
+﻿@using Pokedex.Core.Application.ViewModels.Pokemon
+@model SavePkViewModels
+@{
+    bool editar = Model.Id == 0 ? true : false;
+    ViewData["Title"] = "Guardar Pokemones";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+         <div class="card">
+            <div class="card-header bg-dark text-light">
+                <h4>@(editar ? "Creando un nuevo pokemon" : $"Editando el pokemon: {Model.Name}")</h4>
+            </div>
+
+          <div class="card-body">
+            @if(Model.Regiones == null || Model.Regiones.Count == 0 
+             || Model.Tipos == null ||Model.Tipos.Count ==0)
+            {                
+                   <div class="p-4 mb-2 bg-light rounded">
+                    <h4 class="fst-italic text-center">Primero debes de crear regiones y tipos.</h4>  
+                      <label class="text-primary">Info:</label>
+                      <p class="mb-0 fst-italic">Crea una nueva region o varias regiones, para poder crear pokemones.</p> 
+                   </div>               
+                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                   <a asp-controller="Pokemon" asp-action="Index" class="btn btn-outline-primary">Regresar</a>
+                 </div>
+            }else
+            {
+                 
+              <form method="post" asp-controller="Pokemon" asp-action=@(editar ? "Crear" : "Editar")>
+                     <div class="mb-3">
+                       <label asp-for="Name" class="form-label">Nombre: </label>
+                       <input type="text" asp-for="Name" class="form-control">
+                       <span asp-validation-for="Name" class="text-danger"></span>
+                     </div>                  
+                     <div class="mb-3">
+                       <label asp-for="IDRegions" class="form-label">Categorias: </label>
+                        <select asp-for="IDRegions" asp-items="@(new SelectList(Model.Regiones, "Id", "Name"))" class="form-select" required>
+                            <option value="">Seleccionar una region</option> 
+                        </select>
+                       <span asp-validation-for="IDRegions" class="text-danger"></span>
+                     </div>
+                     <div class="mb-3">
+                       <label asp-for="ImageUrl" class="form-label">Url de la imagen: </label>
+                       <input type="text" asp-for="ImageUrl" class="form-control">
+                       <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                     </div>
+                     <div class="mb-3">
+                       <label asp-for="IDType1Pokemon" class="form-label">Tipo Primario: </label>
+                        <select asp-for="IDType1Pokemon" asp-items="@(new SelectList(Model.Tipos, "Id", "Name"))" class="form-select" required>
+                          <option value="">Selecciona un tipo</option>                           
+                        </select>
+                       <span asp-validation-for="IDType1Pokemon" class="text-danger"></span>
+                     </div>
+                     <div class="mb-3">
+                       <label asp-for="IDType2Pokemon" class="form-label">Tipo Primario: </label>
+                       <select asp-for="IDType2Pokemon" asp-items="@(new SelectList(Model.Tipos, "Id", "Name"))" class="form-select" required>
+                         <option value="null">Selecciona un tipo</option>
+                       </select>
+                     </div>
+                          <input type="hidden" asp-for="Id"/>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-outline-success">@(editar?"Guardar":"Editar")</button>
+                        <a asp-controller="Pokemon" asp-action="Index" class="btn btn-outline-danger">Volver atras</a>
+                      </div>
+              </form>               
+
+            }               
+          </div>
+       </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+}
+
+

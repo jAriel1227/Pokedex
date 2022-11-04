@@ -1,0 +1,41 @@
+﻿@using Pokedex.Core.Application.ViewModels.Regions
+@model SaveRegionsViewModels
+@{
+    bool editMode = Model.Id == 0 ? true : false;
+    ViewData["Title"] = "Guardar producto";
+}
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-header text-light bg-dark">
+                <h4>@(editMode ? "Creando una nueva region" : $"Editando la region: {Model.Name}")</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="Regions" asp-action="@(editMode ? "Crear" : "Editar")">
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Nombre: </label>
+                        <input type="text" asp-for="Name" class="form-control">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Descripcion: </label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                    </div>
+                                      
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-outline-success">Guardar</button>
+                        <a asp-controller="Regions" asp-action="Index" class="btn btn-outline-danger">Volver atras</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
